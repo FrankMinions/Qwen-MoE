@@ -606,8 +606,8 @@ class QWenBlock(nn.Module):
         )
         if config.use_moe:
             self.mlp = MoeLayer(
-                experts=[QWenMLP(config) for _ in range(config.num_local_experts)],
-                gate=nn.Linear(hidden_size, config.num_local_experts, bias=False),
+                experts=[QWenMLP(config) for _ in range(config.num_local_experts[0])],
+                gate=nn.Linear(hidden_size, config.num_local_experts[0], bias=False),
                 config=config
             )
         else:
